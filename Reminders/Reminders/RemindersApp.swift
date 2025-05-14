@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct RemindersApp: App {
+    let viewContext = CoreDataManager.shared.persistentContainer.viewContext
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeScreen().environment(\.managedObjectContext, viewContext)
         }
     }
 }
