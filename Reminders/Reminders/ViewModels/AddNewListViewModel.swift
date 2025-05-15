@@ -22,9 +22,13 @@ class AddNewListViewModel: ObservableObject {
     
     func save() {
         
-        let myList = MyList(context: context)
-        myList.name = name
-        myList.color = NSColor(color)
-        try? myList.save()
+        do {
+            let myList = MyList(context: context)
+            myList.name = name
+            myList.color = NSColor(color)
+            try myList.save()
+        } catch {
+            print(error)
+        }
     }
 }
